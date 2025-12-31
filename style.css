@@ -238,3 +238,20 @@ footer{
   max-width:1100px; margin:0 auto;
   display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
 }
+
+/* Make contact page feel distinct while keeping theme */
+body.contact-page{
+  background:
+    radial-gradient(900px 600px at 70% 8%, rgba(255,255,255,.70) 0%, rgba(255,255,255,0) 55%),
+    radial-gradient(900px 600px at 15% 25%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, #fff3f6 0%, #fde6ee 55%, #fff3f6 100%);
+}
+
+/* Slightly different card tint on contact page for separation */
+body.contact-page .hero-card,
+body.contact-page .card{
+  background:
+    radial-gradient(420px 260px at 15% 20%, rgba(255,255,255,.60) 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(420px 260px at 80% 30%, rgba(255,255,255,.50) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #ffe2eb 0%, #ffd0df 100%);
+}
