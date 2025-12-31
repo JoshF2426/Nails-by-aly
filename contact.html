@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking / Contact | Nails by Aly</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="contact-page">
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="Back to home">Nails by Aly</a>
+
+        <div class="menu" id="menu">
+          <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false">
+            Menu <span class="caret"></span>
+          </button>
+          <div class="menu-panel" aria-label="Site sections">
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="contact.html" aria-current="page">Booking / Contact</a>
+            <a href="index.html#social">Social Media</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Distinct page hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-card">
+        <h1>Booking / Contact</h1>
+        <p class="sub">
+          Use this form to request an appointment. Once you paste your Formspree form endpoint,
+          submissions will go directly to your configured inbox.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn" href="index.html">Back to Home</a>
+          <a class="btn" href="index.html#gallery">View Gallery</a>
+          <a class="btn" href="index.html#pricing">Pricing</a>
+        </div>
+
+        <p class="small" style="margin-top:14px;">
+          Next step: replace the Formspree action URL with your real endpoint (instructions below).
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <div style="font-weight:800; font-size:16px; margin-bottom:10px;">What to include</div>
+        <div class="small">
+          <div style="margin-bottom:10px;"><strong>Set type:</strong> length, shape, style</div>
+          <div style="margin-bottom:10px;"><strong>Date/time:</strong> 2–3 options helps</div>
+          <div style="margin-bottom:10px;"><strong>Inspo:</strong> link or description</div>
+          <div><strong>Contact:</strong> email or phone number</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <h2 class="section-title">Appointment Request Form</h2>
+
+      <div class="contact-grid">
+        <div class="card">
+          <div style="font-weight:800; margin-bottom:8px;">Submit a Request</div>
+          <p class="small">
+            This form is connected to Formspree. Replace the action URL with your Formspree endpoint
+            when you're ready.
+          </p>
+
+          <!-- IMPORTANT: replace YOUR_FORM_ID with your Formspree form endpoint -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+
+            <label for="contact">Phone or Email</label>
+            <input id="contact" name="contact" placeholder="Best way to reach you" required />
+
+            <label for="service">What set do you want?</label>
+            <input id="service" name="service" placeholder="Example: Medium almond, French tip + charms" />
+
+            <label for="datetime">Preferred date/time</label>
+            <input id="datetime" name="preferred_datetime" placeholder="Example: Fridays after 4pm" />
+
+            <label for="message">Message / Notes</label>
+            <textarea id="message" name="message" placeholder="Colors, design details, inspo links, etc."></textarea>
+
+            <!-- Optional: subject line in the email you receive -->
+            <input type="hidden" name="_subject" value="New booking request - Nails by Aly" />
+
+            <!-- Optional: redirect after submission (create thank-you page later) -->
+            <!-- <input type="hidden" name="_redirect" value="https://YOUR_GITHUB_PAGES_URL/thank-you.html"> -->
+
+            <button class="btn primary" type="submit" style="margin-top:12px;">Submit Request</button>
+          </form>
+
+          <p class="small" style="margin-top:12px;">
+            After you add your Formspree endpoint, test it once and confirm the email in Formspree if prompted.
+          </p>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:800; margin-bottom:8px;">Other Booking Options</div>
+          <p class="small">
+            If you also book through Instagram DM or a booking link, put it here as a backup.
+          </p>
+
+          <div class="small">
+            <div style="margin-bottom:10px;"><strong>Instagram:</strong> (add)</div>
+            <div style="margin-bottom:10px;"><strong>Booking link:</strong> (add)</div>
+            <div style="margin-bottom:10px;"><strong>Email:</strong> (add)</div>
+            <div><strong>Policies:</strong> (deposit, cancellations, late fee)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Nails by Aly</div>
+      <div class="small">Booking / Contact</div>
+    </div>
+  </footer>
+
+  <script>
+    // Dropdown toggle
+    const menu = document.getElementById('menu');
+    const menuBtn = document.getElementById('menuBtn');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target)) {
+        menu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
