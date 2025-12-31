@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nails by Aly</title>
+  <style>
+    :root{
+      --bg:#f6f6f7;
+      --card:#ffffff;
+      --text:#111114;
+      --muted:#5d5d66;
+      --line:#e7e7ee;
+      --accent:#111114;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    header{
+      position:sticky; top:0; z-index:10;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:18px 18px;}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .brand{
+      font-weight:800; letter-spacing:.3px;
+      font-size:18px;
+    }
+
+    /* Dropdown */
+    .menu{position:relative;}
+    .menu-btn{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:999px;
+      padding:10px 14px;
+      display:flex; align-items:center; gap:10px;
+      cursor:pointer;
+      box-shadow: 0 3px 12px rgba(0,0,0,.04);
+      font-weight:600;
+    }
+    .caret{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--text);}
+    .menu-panel{
+      position:absolute; right:0; top:48px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      min-width:220px;
+      box-shadow: var(--shadow);
+      padding:8px;
+      display:none;
+    }
+    .menu-panel a{
+      display:block;
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:600;
+    }
+    .menu-panel a:hover{background:#f2f2f5;}
+    .menu.open .menu-panel{display:block;}
+
+    /* Hero */
+    .hero{
+      padding:52px 18px 20px;
+    }
+    .hero-inner{
+      max-width:1100px; margin:0 auto;
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr;}
+    }
+    .hero-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:28px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:48px;
+      line-height:1.05;
+      letter-spacing:-.5px;
+    }
+    @media (max-width: 500px){
+      h1{font-size:38px;}
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+    }
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap;}
+    .btn{
+      border-radius:999px;
+      padding:12px 16px;
+      font-weight:700;
+      border:1px solid var(--line);
+      background:var(--card);
+      cursor:pointer;
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:white;
+      border-color:var(--accent);
+    }
+
+    /* Sections */
+    section{padding:18px 18px 40px;}
+    .section-inner{max-width:1100px; margin:0 auto;}
+    .section-title{
+      font-size:22px;
+      margin:0 0 12px;
+      letter-spacing:-.2px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 22px rgba(0,0,0,.06);
+      padding:18px;
+    }
+
+    /* Gallery grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 520px){
+      .grid{grid-template-columns: 1fr;}
+    }
+    .ph{
+      border-radius:16px;
+      border:1px dashed #cfcfda;
+      height:200px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#777784;
+      font-weight:700;
+      background: #fafafe;
+    }
+
+    /* Pricing */
+    .price-list{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    @media (max-width: 900px){.price-list{grid-template-columns:1fr;}}
+    .price-item{display:flex; justify-content:space-between; gap:12px; padding:12px; border:1px solid var(--line); border-radius:14px;}
+    .price-item span{color:var(--muted); font-weight:700;}
+
+    /* Contact */
+    .contact-grid{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    @media (max-width: 900px){.contact-grid{grid-template-columns:1fr;}}
+    label{display:block; font-weight:700; margin:10px 0 6px;}
+    input, textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 12px;
+      font:inherit;
+      background:#fff;
+    }
+    textarea{min-height:110px; resize:vertical;}
+    .small{color:var(--muted); font-size:13px; line-height:1.5;}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px 18px;
+      color:var(--muted);
+    }
+    .footer-inner{max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">Nails by Aly</div>
+
+        <div class="menu" id="menu">
+          <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false">
+            Menu <span class="caret"></span>
+          </button>
+          <div class="menu-panel" aria-label="Site sections">
+            <a href="#gallery">Gallery</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#booking">Booking / Contact</a>
+            <a href="#social">Social Media</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-card">
+        <h1>Nails by Aly</h1>
+        <p class="sub">
+          Custom sets, clean details, and a polished finish. Browse recent work, view pricing,
+          and book your appointment.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#booking">Book / Contact</a>
+          <a class="btn" href="#gallery">See Gallery</a>
+          <a class="btn" href="#pricing">View Pricing</a>
+        </div>
+        <p class="small" style="margin-top:14px;">
+          Tip: Replace the gallery placeholders with your photos (step-by-step instructions below).
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <div style="font-weight:800; font-size:16px; margin-bottom:10px;">Quick Info</div>
+        <div class="small">
+          <div style="margin-bottom:10px;">
+            <strong>Location:</strong> (Add your city/area)
+          </div>
+          <div style="margin-bottom:10px;">
+            <strong>Hours:</strong> (Add your availability)
+          </div>
+          <div style="margin-bottom:10px;">
+            <strong>Deposit:</strong> (Add your policy if you use one)
+          </div>
+          <div>
+            <strong>Booking:</strong> Use the contact form or link to your booking page.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="gallery">
+    <div class="section-inner">
+      <h2 class="section-title">Gallery</h2>
+      <div class="card">
+        <div class="grid">
+          <div class="ph">Photo 1</div>
+          <div class="ph">Photo 2</div>
+          <div class="ph">Photo 3</div>
+          <div class="ph">Photo 4</div>
+          <div class="ph">Photo 5</div>
+          <div class="ph">Photo 6</div>
+        </div>
+        <p class="small" style="margin-top:12px;">
+          You’ll swap these placeholders with real images once you upload them to your repo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-inner">
+      <h2 class="section-title">Pricing</h2>
+      <div class="card">
+        <div class="price-list">
+          <div class="price-item"><div>Basic Set</div><span>$__</span></div>
+          <div class="price-item"><div>Medium Set</div><span>$__</span></div>
+          <div class="price-item"><div>Long Set</div><span>$__</span></div>
+          <div class="price-item"><div>Freestyle / Custom</div><span>from $__</span></div>
+          <div class="price-item"><div>Fill / Maintenance</div><span>$__</span></div>
+          <div class="price-item"><div>Soak Off</div><span>$__</span></div>
+        </div>
+        <p class="small" style="margin-top:12px;">
+          Add notes here (e.g., prices vary by design complexity, charms, length, etc.).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="section-inner">
+      <h2 class="section-title">Booking / Contact</h2>
+      <div class="contact-grid">
+        <div class="card">
+          <div style="font-weight:800; margin-bottom:8px;">Request an Appointment</div>
+          <p class="small">
+            This form is a starter. GitHub Pages can’t send form emails by itself. You can either:
+            (1) link to a booking service, or (2) use a free form service later.
+          </p>
+
+          <form onsubmit="event.preventDefault(); alert('Form submitted (demo). We will connect a real form service next.');">
+            <label>Name</label>
+            <input placeholder="Your name" required />
+
+            <label>Phone or Email</label>
+            <input placeholder="Best way to reach you" required />
+
+            <label>What set do you want?</label>
+            <input placeholder="Example: Medium almond, French tip + charms" />
+
+            <label>Preferred date/time</label>
+            <input placeholder="Example: Fridays after 4pm" />
+
+            <label>Message</label>
+            <textarea placeholder="Any inspo details, colors, or notes"></textarea>
+
+            <button class="btn primary" type="submit" style="margin-top:12px;">Submit</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:800; margin-bottom:8px;">Direct Booking Option</div>
+          <p class="small">
+            If you use Square, GlossGenius, Fresha, Calendly, or Instagram DM, put your link here.
+          </p>
+          <div class="small">
+            <div style="margin-bottom:10px;"><strong>Booking link:</strong> (add)</div>
+            <div style="margin-bottom:10px;"><strong>Email:</strong> (add)</div>
+            <div style="margin-bottom:10px;"><strong>Phone:</strong> (add)</div>
+            <div><strong>Policies:</strong> (deposit, late fee, cancellations)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="social">
+    <div class="section-inner">
+      <h2 class="section-title">Social Media</h2>
+      <div class="card">
+        <p class="small" style="margin:0 0 10px;">
+          Add your handles below and I’ll format them nicely.
+        </p>
+        <div class="small" style="display:flex; gap:16px; flex-wrap:wrap; font-weight:800;">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="TikTok">TikTok</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Nails by Aly</div>
+      <div class="small">Built with GitHub Pages</div>
+    </div>
+  </footer>
+
+  <script>
+    // Dropdown toggle
+    const menu = document.getElementById('menu');
+    const menuBtn = document.getElementById('menuBtn');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close menu when clicking a link or outside
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target)) {
+        menu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
